@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Wordly Dictionary</title>
+    <link rel="stylesheet" href="./style.css">
+    <script src="./index.js" defer></script>
+</head>
+<body>
+
+<!-- Header -->
+<header>
+    <h1>📖 Wordly</h1>
+    <p>Learn, Say, Pronounce, Listen, Remember</p>
+</header>
+
+<main>
+
+    <!-- Search Section -->
+    <section class="search-section">
+
+        <form id="search-form">
+            <label for="word-input">Search for a word</label>
+            <input type="text" id="word-input" name="word" placeholder="Enter an English word" autocomplete="off">
+
+            <button id="search-btn" type="submit">Search</button>
+
+        </form>
+
+    </section>
+
+    <!-- Messages Section -->
+
+    <section class="message-section">
+
+        <p id="loading-message" class="hidden">Loading...</p>
+
+        <p id="error-message" role="alert"></p>
+
+    </section>
+
+    <!-- Results Section -->
+
+    <section id="results-section" class="results-section">
+
+        <div class="result-card">
+            
+            <p id="phonetic"></p>
+
+            <button id="audio-btn" type="button" class="hidden"> 🔊 Play Audio </button>
+
+            <div id="meaning">Meaning</div>
+
+            <div id="synonyms">Synonyms</div>
+
+            <div id="source-link">Source Link</div>
+
+            <div class="word-header">
+                <h2 id="word">Searched Words</h2>
+                <button id="favorite-btn" type="button"> ☆ Save </button>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- Favorites Sectiom -->
+
+    <section class="favorites-section">
+
+        <h2>Favorites</h2>
+
+        <p id="empty-favorites"> No favorite words saved yet.</p>
+
+        <div id="favorites-list"></div>
+
+    </section>
+
+</main>
+
+</body>
+</html>

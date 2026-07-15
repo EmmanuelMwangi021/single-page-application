@@ -1,0 +1,193 @@
+/* RESET */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    background:#f8ea21;
+    color:#333;
+    line-height:1.8;
+    padding:30px;
+}
+
+main{
+    max-width:900px;
+    margin:auto;
+}
+
+/* Header-Section */
+
+header{
+    text-align:center;
+    margin-bottom:30px;
+}
+
+header h1{
+    font-size:4.5rem;
+    margin-bottom:10px;
+}
+
+header p{
+    color:#0e0d0d;
+    font-weight: bolder;
+    font-size: 1.5rem;
+}
+
+/* Search-Section */
+
+.search-section{
+    margin-top: 10px;
+    margin-bottom:25px;
+}
+
+form{
+    display:flex;
+    gap:20px;
+}
+
+input{
+    flex:1;
+    padding:12px;
+    border:1px solid #ccc;
+    border-radius:10px;
+    font-size:1rem;
+}
+
+button{
+    padding:10px 15px;
+    border:none;
+    border-radius:6px;
+    cursor:pointer;
+    background:#2563eb;
+    color:white;
+    transition:.3s;
+}
+
+button:hover{
+    background:#1d4ed8;
+}
+
+button:disabled{
+    opacity:.6;
+    cursor:not-allowed;
+}
+
+/* Messages-Section */
+
+.message-section{
+    min-height:30px;
+    margin-bottom:20px;
+}
+
+#error-message{
+    color:red;
+    font-weight: bold;
+}
+
+.hidden{
+    display: none;
+}
+
+/* Results-Section */
+
+.results-section{
+    margin-bottom:40px;
+}
+
+.result-card{
+    background:white;
+    padding:40px;
+    border-radius:20px;
+    box-shadow:0 2px 8px rgba(0,0,0,.1);
+}
+
+
+#phonetic{
+    color:#666;
+    margin-bottom:20px;
+}
+
+#audio-btn{
+    margin-bottom:20px;
+}
+
+#meaning{
+    margin-top:20px;
+}
+
+.meaning{
+    margin-bottom:20px;
+}
+
+.definition{
+    margin-left:20px;
+}
+
+.example{
+    color:#555;
+    font-style:italic;
+    margin-top:5px;
+}
+
+.synonyms{
+    margin-top:10px;
+}
+
+.source-link{
+    margin-top: 10px;
+}
+
+.word-header{
+    display:flex;
+    justify-content:space-between;
+    align-items: center;
+    margin-bottom:15px;
+}
+
+/* Favorite-Section */
+
+.favorites-section{
+    margin-bottom:30px;
+}
+
+.favorites-section h2{
+    margin-bottom:15px;
+}
+
+.favorite-item{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:white;
+    padding:12px;
+    border-radius:8px;
+    margin-bottom:10px;
+    box-shadow:0 2px 5px rgba(0,0,0,.08);
+}
+
+.saved{
+    background:#dbeafe;
+}
+
+/* Mobile-view */
+
+@media(max-width:768px){
+
+    form{
+        flex-direction:column;
+    }
+
+    button{
+        width:100%;
+    }
+
+    .word-header{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:10px;
+    }
+}
