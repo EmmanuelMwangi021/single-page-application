@@ -59,6 +59,7 @@ async function fetchWord (word) {
     }
 
 }
+
 //The displayFunction is used to display the fetched data in the results section
 
 function displayWord(data) {
@@ -67,25 +68,47 @@ function displayWord(data) {
     word.textContent = wordData.word// Now here we are working with the actual dictionary
 
     phonetic.textContent = wordData.phonetic || "No phonetic available"; //If phonetic is available, show it otherwise show ""
-    // meanings.innerHTML = "";
-    // source.innerHTML = "";
+    meanings.innerHTML = "";
+    source.innerHTML = "";
 
-    // wordData.meanings.forEach((meaning) => {    //for every meaning returned by the API
-    //     const meaningDiv = document.createElement("div");
-    //     meaningDiv.classList.add("meaning"); //Every meaning gets its own div element
-    //     meaningDiv.innerHTML = `<h3>${meaning.partOfSpeech}</h3>`;
+    wordData.meanings.forEach((meaning) => {    //for every meaning returned by the API
+        
+        const meaningDiv = document.createElement("div");
+        meaningDiv.classList.add("meaning"); //Every meaning gets its own div element
+        meaningDiv.innerHTML = `<h3>${meaning.partOfSpeech}</h3>`;
 
-    //     meaning.definition.forEach((definition) => {
-    //         meaningDiv.innerHTML += `<p class= "definition"> <strong>Definition: </strong> ${definition.definition}</p>` //Each definition is appended to its respective slot. 
+        meaning.definitions.forEach((definition) => {
+            meaningDiv.innerHTML += `<p class= "definition"> <strong>Definition: </strong> ${definition.definition}</p>` //Each definition is appended to its respective slot. 
             
-    //         if (definition.example) {
-    //             meaningDiv.innerHTML += `<p class="example"> <strong>Example: </strong> ${definition.example}</p>`; 
-    //         }
-    //     })
-    // });
+            if (definition.example) {
+                meaningDiv.innerHTML += `<p class="example"> <strong>Example: </strong> ${definition.example}</p>`; // Adds the examples section if there are examples
+            };
 
+            if (definition.synonyms.length > 0) {
+                meaningDiv.innerHTML += `<p class="synonyms"> <strong>Synonyms: </strong> ${definition.synonyms.join(", ")}</p>`; //Adds synonyms to a word if it exists
+            };
+        });
 
+        meanings.appendChild(meaningDiv); //Linking the child to a parent element
 
+    });
+
+    if (wordData.sourceUrls && wordData.sourceUrls.length > 0) {
+        source.innerHTML= `<p> <strong>Source: </strong> <a href= "${wordData.sourceUrls[0]} target= "_blank">${wordData.sourceUrls[0]}</a></p>`; //target: _blank - opens the source in a new browser tab
+    }
+    console.log(wordData.sourceUrls)
+
+    const audio = wordData.phonetics.find((item) => item.audio); // searches the array and returns the first item that has an audioURL
+
+    if (audio) {       // The if function for audio, if audio was found display buttonand when button is clicked create an audio icon and play
+        audioBtn.classList.remove("hidden");
+        audioBtn.onclick = function() {
+            new Audio(audio.audio).play();
+        };
+    }else {
+        audioBtn.classList.add("hidden"); //else dont show the button. 
+    }
+  
 }
 
 
