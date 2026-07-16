@@ -83,6 +83,11 @@ button:disabled{
     margin-bottom:20px;
 }
 
+#loading-message{
+    color: #2363eb;
+    font-weight: bold;
+}
+
 #error-message{
     color:red;
     font-weight: bold;
@@ -115,7 +120,7 @@ button:disabled{
     margin-bottom:20px;
 }
 
-#meaning{
+#meanings{
     margin-top:20px;
 }
 
@@ -137,8 +142,16 @@ button:disabled{
     margin-top:10px;
 }
 
-.source-link{
+.source{
     margin-top: 10px;
+}
+
+.word{
+    font-size: 2rem;
+}
+
+#favorite-btn{
+    white-space: nowrap;
 }
 
 .word-header{
@@ -156,6 +169,10 @@ button:disabled{
 
 .favorites-section h2{
     margin-bottom:15px;
+}
+
+#empty-favorites{
+    color:#666;
 }
 
 .favorite-item{

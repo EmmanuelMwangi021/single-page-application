@@ -10,10 +10,10 @@
 </head>
 <body>
 
-<!-- Header -->
+<!-- Header Section -->
 <header>
     <h1>📖 Wordly</h1>
-    <p>Learn, Say, Pronounce, Listen, Remember</p>
+    <p>Learn, Pronunce, Listen, Remember</p>
 </header>
 
 <main>
@@ -23,7 +23,7 @@
 
         <form id="search-form">
             <label for="word-input">Search for a word</label>
-            <input type="text" id="word-input" name="word" placeholder="Enter an English word" autocomplete="off">
+            <input type="text" id="word-input" name="word" placeholder="Enter an English word" autocomplete="off" required>
 
             <button id="search-btn" type="submit">Search</button>
 
@@ -35,7 +35,7 @@
 
     <section class="message-section">
 
-        <p id="loading-message" class="hidden">Loading...</p>
+        <p id="loading-message" class="hidden" role="status">Loading...</p>
 
         <p id="error-message" role="alert"></p>
 
@@ -46,21 +46,19 @@
     <section id="results-section" class="results-section">
 
         <div class="result-card">
-            
-            <p id="phonetic"></p>
-
-            <button id="audio-btn" type="button" class="hidden"> 🔊 Play Audio </button>
-
-            <div id="meaning">Meaning</div>
-
-            <div id="synonyms">Synonyms</div>
-
-            <div id="source-link">Source Link</div>
 
             <div class="word-header">
                 <h2 id="word">Searched Words</h2>
-                <button id="favorite-btn" type="button"> ☆ Save </button>
+                <button id="favorite-btn" type="button" aria-label="Save to favorites"> ☆ Save </button>
             </div>
+            
+            <p id="phonetic"></p>
+
+            <button id="audio-btn" type="button" class="hidden" aria-label="Play pronunciation"> 🔊 Play Audio </button>
+
+            <div id="meanings">Meaning</div>
+
+            <div id="source">Source Link</div>
 
         </div>
 
