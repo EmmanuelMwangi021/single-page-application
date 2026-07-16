@@ -20,7 +20,7 @@ const favoriteBtn = document.getElementById("favorite-btn");
 const favoritesList = document.getElementById("favorites-list");
 const emptyFavorites = document.getElementById("empty-favorites");
 
-//handleSearch function handles the user interaction
+//handleSearch function handles the user interaction and input
 
 searchForm.addEventListener("submit", handleSearch); 
 function handleSearch (event) {
@@ -36,10 +36,10 @@ function handleSearch (event) {
     fetchWord(searchWord);
 }
 
-//The async Function fetchWord communicates with the API
+//The async Function fetchWord communicates with the API and fetches data
 
 async function fetchWord (word) {
-    loadingMessage.classList.remove("hidden");
+    loadingMessage.classList.remove("hidden");// loading message is displayed
     errorMessage.textContent = "";
 
     try{
@@ -55,12 +55,12 @@ async function fetchWord (word) {
     }catch (error) {
         errorMessage.textContent = error.message;// Displays the error message incase of net issues
     } finally {
-        loadingMessage.classList.add("hidden"); // Hides the loading ... section
+        loadingMessage.classList.add("hidden"); // Hides the loading ... section 
     }
 
 }
 
-//The displayFunction is used to display the fetched data in the results section
+//The displayWord Function is used to display the fetched data in the results section
 
 function displayWord(data) {
     
@@ -93,8 +93,8 @@ function displayWord(data) {
 
     });
 
-    if (wordData.sourceUrls && wordData.sourceUrls.length > 0) {
-        source.innerHTML= `<p> <strong>Source: </strong> <a href= "${wordData.sourceUrls[0]} target= "_blank">${wordData.sourceUrls[0]}</a></p>`; //target: _blank - opens the source in a new browser tab
+    if (wordData.sourceUrls && wordData.sourceUrls.length > 0) { //checks if he array of urls exist and it contains atleast 1 array
+        source.innerHTML= `<p> <strong>Source: </strong> <a href= "${wordData.sourceUrls[0]}">${wordData.sourceUrls[0]}</a></p>`; //displays the source url
     }
     console.log(wordData.sourceUrls)
 
@@ -111,4 +111,47 @@ function displayWord(data) {
   
 }
 
+let favorites = JSON.parse(localStorage.getItem("favorites"))|| []; //empty array to handleour data || favorites is added to the local storage
 
+favoriteBtn.addEventListener("click", saveFavorite); //event listener for the save button
+
+//saveFavorite function is used to save the users favorite words(managing the data)
+
+function saveFavorite() {
+    const currentWord = word.textContent; //currentWord takes the user input
+
+    if(favorites.includes(currentWord)) { //checks if the currenWord is in the fav array
+        return; //returns the result, either true or false
+    }
+    favorites.push(currentWord); //adds the currentWord to the array
+    localStorage.setItem("favorites", JSON.stringify(favorites)); //stringify converts the array into a readable array of strings
+    displayFavorites();
+}
+
+//displayFavorites Function (updates the UI) reads every word in the favorites array, creates elements for each word and adds them to favorite-list
+
+function displayFavorites() {
+    favoritesList.innerHTML = ""; //clears the list
+
+    if(favorites.length === 0) {   //Checks if the arrays length is strictly equal to zero
+        emptyFavorites.classList.remove("hidden");
+        return;
+    }
+    emptyFavorites.classList.add("hidden") //Hides the "no favorite words saved yet"
+
+    favorites.forEach((favorite) => {
+        const favoriteItem = document.createElement("div");
+        favoriteItem.classList.add("favorite-item");
+
+        favoriteItem.innerHTML = `<span>${favorite}</span> <button class="remove-btn">Remove</button>`; //added a remove button
+        const removeBtn = favoriteItem.querySelector(".remove-btn"); //query selector find the exact remove-button
+        removeBtn.addEventListener("click", () => { //event listener listens for a click on the remove button
+            favorites = favorites.filter((word) => word !== favorite), //Removes the word from the favorites array
+            localStorage.setItem("favorites", JSON.stringify(favorites));
+            displayFavorites();
+        }) //.filter method creates a new array which is appended to favorites
+
+        favoritesList.appendChild(favoriteItem);
+    });
+}
+displayFavorites();
