@@ -75,7 +75,7 @@ function displayWord(data) {
         
         const meaningDiv = document.createElement("div");
         meaningDiv.classList.add("meaning"); //Every meaning gets its own div element
-        meaningDiv.innerHTML = `<h3>${meaning.partOfSpeech}</h3>`;
+        meaningDiv.innerHTML = `<h3>${meaning.partOfSpeech}</h3>`; //describes what partofspeech the word input by the user is
 
         meaning.definitions.forEach((definition) => {
             meaningDiv.innerHTML += `<p class= "definition"> <strong>Definition: </strong> ${definition.definition}</p>` //Each definition is appended to its respective slot. 

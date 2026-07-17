@@ -58,3 +58,52 @@ bash git clone https://github.com/EmmanuelMwangi021/single-page-application.git
 3. Open `index.html` in your browser.
 
 No additional packages or dependencies are required.
+
+
+## How to Use
+
+1. Enter an English word in the search box.
+2. Click the Search button.
+3. View the word details including:
+   - Phonetic spelling
+   - Definitions
+   - Examples
+   - Synonyms
+   - Pronunciation audio
+   - Source link
+4. Click ☆ Save to add the word to your favorites.
+5. Click Remove to delete a word from the favorites list.
+
+
+## Local Storage
+
+Favorite words are stored in the browser's Local Storage, allowing them to remain available even after refreshing or reopening the application.
+
+## Screenshots
+
+You can include screenshots of the application here. They will be saved in the assets folder.
+
+Example:
+
+Assets/
+screenshot.png
+
+## Future Improvements
+
+- Search history
+- Dark mode(light mode)
+- Multiple pronunciations
+- Recently searched words
+- Share favorite words
+- Improved error messages
+
+
+## Author
+
+Emmanuel Mwangi
+
+Software Engineering Student at Moringa School
+
+## License
+
+This project is created for educational purposes as part of a Software Engineering summative assessment in Moringa School.
